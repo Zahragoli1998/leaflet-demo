@@ -1,10 +1,9 @@
 import React from "react";
 import "./App.css";
 
-// import Home from "./components/Home";
 import { Map, TileLayer, Marker, Popup } from "react-leaflet";
 
-import VenueLocationIcon from './components/VenueLocationIcon'
+import VenueLocationIcon from './VenueLocationIcon'
 import "leaflet/dist/leaflet.css";
 
 const deepClone = obj => JSON.parse(JSON.stringify(obj))
