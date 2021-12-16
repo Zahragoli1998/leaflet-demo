@@ -16,7 +16,7 @@ class App extends React.Component {
         lat: 35.7,
         lng: 51.3
       },
-      zoom: 13
+      zoom: 14
     }
   }
 
@@ -45,6 +45,49 @@ class App extends React.Component {
   }
 
   render() {
+
+    const {lat, lng} = this.state.currentLocation
+    
+    const locations = [
+      {
+        lat,
+        lng
+      },
+      {
+        lat: lat + .005,
+        lng
+      },
+      {
+        lat,
+        lng: lng + .005
+      },
+      {
+        lat: lat - .005,
+        lng
+      },
+      {
+        lat,
+        lng: lng - .005
+      },
+      {
+        lat: lat + .005,
+        lng: lng + .005
+      },
+      {
+        lat: lat - .005,
+        lng: lng - .005
+      },
+      {
+        lat: lat + .005,
+        lng: lng - .005
+      },
+      {
+        lat: lat - .005,
+        lng: lng + .005
+      },
+
+    ]
+
     return (
       <div style={{position: 'relatives'}} >
         <h1>Hello world</h1>
@@ -59,9 +102,15 @@ class App extends React.Component {
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             />
-            <Marker position={this.state.currentLocation} icon={VenueLocationIcon}>
-              <Popup> salam </Popup>
-            </Marker>
+            {
+              locations.map((loc, i) => {
+                return (
+                  <Marker key={i} position={loc} icon={VenueLocationIcon}>
+                    <Popup> im index {i} </Popup>
+                  </Marker>
+                )
+              })
+            }
           </Map>
         </div>
       </div>
